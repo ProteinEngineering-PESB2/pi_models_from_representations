@@ -10,14 +10,16 @@ column_response = sys.argv[4]
 column_id = sys.argv[5]
 name_path_to_create = sys.argv[6]
 
+#create a dictionary 
+dict_columns = {"sequence":column_seq, "id_seq": column_id, "response": column_response}
 #create a data frame
 print("Reading dataframe")
 df_export = pd.DataFrame()
 
 #create dataframe
 print("Creating dataframe")
-for column in [column_id, column_seq, column_response]:
-    df_export[column] = df_data[column]
+for column in dict_columns:
+    df_export[column] = df_data[dict_columns[column]]
 
 #create dir
 command = "mkdir {}{}".format(path_export, name_path_to_create)
